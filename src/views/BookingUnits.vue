@@ -1,11 +1,11 @@
 <template>
     <h1>Booking Units</h1>
   <div v-if="payload" class="unit-types">
-    <div v-for="payload_data in payload" :key="payload_data">
-      <div v-for="payload in payload_data" :key="payload" class="container">
+    <div v-for="payload_data of payload" :key="payload_data">
+      <div v-for="payload of payload_data" :key="payload" class="container">
         <div class="row">
           <div
-            v-for="payloads in payload"
+            v-for="payloads of payload"
             :key="payloads"
             class="col-12 col-md-4 col-sm-6 col-lg-3 g-2"
           >

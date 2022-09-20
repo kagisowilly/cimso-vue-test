@@ -1,11 +1,11 @@
 <template>
   <h1>Unit Types With Bookings</h1>
 
-  <div v-if="unitTypesBookingUnits" class="container units">
+  <div  class="container units">
     <div>
-      <div class="row">
+      <div v-if="unitTypesBookingUnits" class="row">
         <div
-          v-for="unittype in unitTypesBookingUnits"
+          v-for="unittype of unitTypesBookingUnits"
           :key="unittype['Booking Unit ID']"
           class="card col-12 col-md-4 col-sm-6 col-lg-3 p-2 g-2"
         >
@@ -53,14 +53,16 @@
           </p>
         </div>
       </div>
-    </div>
-  </div>
-  <div v-else className="load">
+      <div v-else className="load">
     <div class="ring">
       Loading
       <span className="loader"></span>
     </div>
   </div>
+    </div>
+    
+  </div>
+
 </template>
 
 <script>
