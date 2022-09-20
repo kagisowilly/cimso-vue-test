@@ -1,12 +1,13 @@
 <template>
   <nav :class="{ change_color: scrollPosition > 50 }">
     <div class="nav-div container">
-      <div>
+      <div class="d-flex">
         <router-link to="/">Unit Types</router-link>
         <router-link to="/bookingunits">Booking Units </router-link>
+        <router-link to="/unittypes-bookingunits">Units & Bookings</router-link>
       </div>
       <div>
-        <h1>CIMSO</h1>
+        <img className="logo" src="./cimso-logo.png" alt="Navlogo" />
       </div>
     </div>
   </nav>
@@ -66,5 +67,8 @@ h1 {
   align-items: center;
   justify-content: space-between;
   height: 70px;
+}
+.logo{
+  width: 100px;
 }
 </style>

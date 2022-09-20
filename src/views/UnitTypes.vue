@@ -1,6 +1,6 @@
 <template>
   <h1>Unit Types</h1>
-  <div class="unit-types">
+  <div v-if="payload" class="unit-types">
     <div v-for="payload_data in payload" :key="payload_data">
       <div v-for="payload in payload_data" :key="payload" class="container">
         <div class="row">
@@ -58,6 +58,12 @@
       </div>
     </div>
   </div>
+  <div v-else className="load">
+          <div class="ring">
+            Loading
+            <span className="loader"></span>
+          </div>
+        </div>
 </template>
 
 <script>
@@ -83,6 +89,92 @@ export default {
 </script>
 
 <style scoped>
+  /* LOADER */
+.load{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+}
+.ring
+{
+  position:absolute;
+  width:150px;
+  height:150px;
+  background:transparent;
+  border:3px solid #3c3c3c;
+  border-radius:50%;
+  text-align:center;
+  line-height:150px;
+  font-family:sans-serif;
+  font-size:20px;
+  color:rgb(23, 57, 227);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  text-shadow:0 0 10px rgb(23, 57, 227);
+  box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+.ring:before
+{
+  content:'';
+  position:absolute;
+  top:-3px;
+  left:-3px;
+  width:100%;
+  height:100%;
+  border:3px solid transparent;
+  border-top:3px solid rgb(23, 57, 227);
+  border-right:3px solid rgb(23, 57, 227);
+  border-radius:50%;
+  animation:animateC 2s linear infinite;
+}
+.span
+{
+  display:block;
+  position:absolute;
+  top:calc(50% - 2px);
+  left:50%;
+  width:50%;
+  height:4px;
+  background:transparent;
+  transform-origin:left;
+  animation:animate 2s linear infinite;
+}
+.loader:before
+{
+  content:'';
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:rgb(23, 57, 227);
+  top:-6px;
+  right:-8px;
+  box-shadow:0 0 20px rgb(23, 57, 227);
+}
+@keyframes animateC
+{
+  0%
+  {
+    transform:rotate(0deg);
+  }
+  100%
+  {
+    transform:rotate(360deg);
+  }
+}
+@keyframes animate
+{
+  0%
+  {
+    transform:rotate(45deg);
+  }
+  100%
+  {
+    transform:rotate(405deg);
+  }
+}
 .unit-types {
   display: flex;
   flex-wrap: wrap;
@@ -96,6 +188,7 @@ p span{
 .card{
     background-color:transparent;
     min-height: 470px;
+    border: solid 1px rgb(23, 57, 227);
   }
 p{
   margin-bottom: 5px !important;
